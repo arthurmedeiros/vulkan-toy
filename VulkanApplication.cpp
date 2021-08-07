@@ -67,6 +67,44 @@ static void windowKeyCallback(GLFWwindow* window, int key, int scancode, int act
     }
 }
 
+static void mousePosCallback(GLFWwindow* window, double posX, double posY) {
+    VulkanApplication* va = static_cast<VulkanApplication*>(glfwGetWindowUserPointer(window));
+
+    static bool firstFramePress = false;
+
+    if (va->isMousePressed) {
+        glm::ivec2 currentPos = glm::ivec2(posX, posY);
+
+        if (!firstFramePress) {
+            firstFramePress = true;
+            va->lastMousePos = currentPos;
+            return;
+        }
+
+        glm::vec2 normalizedMovement = glm::vec2(currentPos - va->lastMousePos) / glm::vec2(va->windowSize);
+
+        glm::vec3 cameraRight = glm::cross(va->cameraDirection, va->cameraUp);
+
+        va->cameraDirection = glm::rotate(glm::mat4(1.f), -normalizedMovement.x, va->cameraUp) *
+                              glm::rotate(glm::mat4(1.f), -normalizedMovement.y, cameraRight) *
+                              glm::vec4(va->cameraDirection, 0.f);
+        va->lastMousePos = currentPos;
+        return;
+    }
+    firstFramePress = false;
+}
+
+static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
+    VulkanApplication* va = static_cast<VulkanApplication*>(glfwGetWindowUserPointer(window));
+
+    if (action == GLFW_PRESS) {
+        va->isMousePressed = true;
+    }
+    else if (action == GLFW_RELEASE) {
+        va->isMousePressed = false;
+    }
+}
+
 void VulkanApplication::initWindow() {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -75,6 +113,8 @@ void VulkanApplication::initWindow() {
     glfwSetWindowUserPointer(window, this);
     glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
     glfwSetKeyCallback(window, windowKeyCallback);
+    glfwSetCursorPosCallback(window, mousePosCallback);
+    glfwSetMouseButtonCallback(window, mouseButtonCallback);
 }
 
 bool VulkanApplication::checkValidationLayerSupport() {
@@ -421,6 +461,9 @@ void VulkanApplication::createSwapChain() {
     VkSurfaceFormatKHR surfaceFormat = chooseSwapSurfaceFormat(swapChainSupport.formats);
     VkPresentModeKHR presentMode = chooseSwapPresentMode(swapChainSupport.presentModes);
     VkExtent2D extent = chooseSwapExtent(swapChainSupport.capabilities);
+
+    windowSize.x = extent.width;
+    windowSize.y = extent.height;
 
     uint32_t imageCount = swapChainSupport.capabilities.minImageCount + 1;
     if (swapChainSupport.capabilities.maxImageCount > 0 && imageCount > swapChainSupport.capabilities.maxImageCount) {
@@ -1544,6 +1587,8 @@ void VulkanApplication::initInputs() {
     for (size_t i = 0; i < KI_NUMBER_OF_INPUTS; i++) {
         isKeyPressed[i] = false;
     }
+    
+    isMousePressed = false;
 }
 
 void VulkanApplication::updateUniformBuffer(uint32_t currentImage) {

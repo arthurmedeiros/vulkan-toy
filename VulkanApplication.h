@@ -72,7 +72,7 @@ struct SwapChainSupportDetails {
     std::vector<VkPresentModeKHR> presentModes;
 };
 
-typedef enum KeyInput {
+enum KeyInput {
     KI_W,
     KI_A,
     KI_S,
@@ -89,7 +89,11 @@ public:
     glm::vec3 cameraUp;
     float     cameraSpeed;
 
+    glm::ivec2 windowSize;
+    glm::ivec2 lastMousePos;
+
     bool isKeyPressed[KI_NUMBER_OF_INPUTS];
+    bool isMousePressed;
 private:
     GLFWwindow* window;
     VkInstance instance;
