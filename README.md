@@ -10,7 +10,7 @@ If you want to reach me, feel free to do so at: arthur.medeiros12@gmail.com.
 
 Original code based on Alexander Overvoorde's Vulkan tutorial: https://github.com/Overv/VulkanTutorial.
 
-**ImGUI** (included): https://github.com/ocornut/imgui.
+**Dear ImGUI** (included): https://github.com/ocornut/imgui.
 
 **stb** (**stb_image**, included): https://github.com/nothings/stb.
 
