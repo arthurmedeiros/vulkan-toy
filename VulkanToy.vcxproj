@@ -43,7 +43,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{692c581e-b1a9-440a-b49e-a5f3dced93ff}</ProjectGuid>
+    <ProjectGuid>{7D1A365A-ED60-42DE-990F-EAB1C16B5D80}</ProjectGuid>
     <RootNamespace>VulkanToy</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>VulkanToy</ProjectName>
