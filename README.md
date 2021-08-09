@@ -8,17 +8,17 @@ If you want to reach me, feel free to do so at: arthur.medeiros12@gmail.com.
 
 ## Dependencies and acknowledgements
 
-Original code based on Alexander Overvoorde's Vulkan tutorial: https://github.com/Overv/VulkanTutorial
+Original code based on Alexander Overvoorde's Vulkan tutorial: https://github.com/Overv/VulkanTutorial.
 
-**ImGUI** (included): https://github.com/ocornut/imgui
+**ImGUI** (included): https://github.com/ocornut/imgui.
 
-**stb** (**stb_image**, included): https://github.com/nothings/stb
+**stb** (**stb_image**, included): https://github.com/nothings/stb.
 
-**tinyobjloader** (included): https://github.com/tinyobjloader/tinyobjloader
+**tinyobjloader** (included): https://github.com/tinyobjloader/tinyobjloader.
 
-**GLM**: https://github.com/g-truc/glm
+**GLM**: https://github.com/g-truc/glm.
 
-Compiled using **Visual Studio 2019**
+Compiled using **Visual Studio 2019**.
 
 ## Last Update
 
