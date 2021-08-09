@@ -1846,7 +1846,7 @@ ImDrawData* VulkanApplication::drawUIFrame() {
 
         ImGui::Text("Device: %s", physicalDeviceName);               // Display some text (you can use a format strings too)
 
-        ImGui::DragFloat("Camera Speed:", &cameraSpeed, 0.001, 0.f, 10.f);
+        ImGui::DragFloat("Camera Speed", &cameraSpeed, 0.001, 0.f, 10.f);
 
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
         ImGui::End();
