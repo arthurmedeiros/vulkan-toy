@@ -155,7 +155,7 @@ private:
     std::vector<VkImage> textureImages;
     std::vector<VkDeviceMemory> textureImagesMemory;
     std::vector<VkImageView> textureImageViews;
-    std::vector<VkSampler> textureSamplers;
+    VkSampler textureSampler;
     uint32_t textureCount = 0;
 
     VkPipeline graphicsPipeline;
