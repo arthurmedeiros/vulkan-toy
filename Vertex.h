@@ -52,3 +52,10 @@ namespace std {
         }
     };
 }
+
+struct TriangleMesh {
+    //std::vector<Vertex> vertices;   currently we only use one global vertex buffer
+   // std::vector<uint32_t> indices;  and one global index buffer
+    uint32_t indexCount = 0;
+    uint32_t diffuseTextureID = -1;
+};
